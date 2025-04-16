@@ -1,11 +1,12 @@
 #photo{
-    height: 150px;
+    height: 170px;
     width: 150px;
     object-fit: fit;
     user-select: none;
 }
 .card-item{
-    width: 500px;
+    display: contents;
+    width: 100%;
 }
 #btnBuyCart{
     margin-top: 30px;
@@ -17,4 +18,10 @@
 }
 #input-cart-item{
     border-color: var(--primary-color);
+}
+.row.g-0{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

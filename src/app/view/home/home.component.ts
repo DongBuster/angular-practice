@@ -3,15 +3,16 @@ import { CommonModule } from '@angular/common';
 import { HousingLocationComponent } from '../../component/housing-location/housing-location.component';
 import { Housinglocation } from '../../interface/housinglocation';
 import { Subscription } from 'rxjs';
-import { FilterService } from 'src/app/service/search/search.service';
+import { FilterService } from 'src/app/service/filter/filter.service';
 import { ToastComponent } from 'src/app/component/toast/toast.component';
 import { ToastService } from 'src/app/service/toast/toast.service';
 import { CarouselComponent } from 'src/app/component/carousel/carousel.component';
+import { FilterHousingComponent } from 'src/app/component/filter-housing/filter-housing.component';
 
 @Component({
   selector: 'app-home',  
   standalone: true,
-  imports: [CommonModule, HousingLocationComponent,ToastComponent,CarouselComponent],
+  imports: [CommonModule, HousingLocationComponent,ToastComponent,CarouselComponent,FilterHousingComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

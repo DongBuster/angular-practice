@@ -5,6 +5,9 @@
     border-radius: 30px;
     float: right;
   }
+  #detail-loacation{
+    min-height: 50vw;
+  }
  /* .listing-heading {
     font-size: 30pt;
     font-weight: bold;

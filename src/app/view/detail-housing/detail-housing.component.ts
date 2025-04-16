@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute } from '@angular/router';
-import { HousingService } from 'src/app/service/housing/housing.service';
+import { HousingService } from 'src/app/service/getHousing/housing.service';
 import { Housinglocation } from 'src/app/interface/housinglocation';
 import { MatSnackBar } from '@angular/material/snack-bar';
 

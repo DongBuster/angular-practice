@@ -5,8 +5,6 @@ import { Housinglocation } from '../../interface/housinglocation';
 import { RouterModule } from '@angular/router';
 import { FeatherIconsModule } from '../icons/icons.component';
 import { ToastService } from 'src/app/service/toast/toast.service';
-import { ToastComponent } from '../toast/toast.component';
-declare var bootstrap: any;
 @Component({
   // Khai báo selector cho component
   // có thể gọi đến selector này giống như thẻ html 

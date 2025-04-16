@@ -3,6 +3,7 @@
   <div class="card-body">
     <h5 class="card-title">{{ housingLocation.name }}</h5>
     <p id="location" class="card-text">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
+    <h5 class="card-price">{{ housingLocation.price }}$ </h5>
     <div id="add-house">
       <a [routerLink]="['detail',housingLocation.id]" >Learn more</a>
       <i-feather  (click)="addHouseToCart(housingLocation)" id="icon-add" name="plus" ></i-feather>
