@@ -1,0 +1,53 @@
+<article>
+  <img
+    class="listing-photo"
+    [src]="housingLocation?.photo"
+    alt="Exterior photo of {{ housingLocation?.name }}"
+    crossorigin
+  />
+  <section class="listing-description">
+    <h2 class="listing-heading">{{ housingLocation?.name }}</h2>
+    <p class="listing-location">{{ housingLocation?.city }}, {{ housingLocation?.state }}</p>
+  </section>
+  <section class="listing-features">
+    <h2 class="section-heading">About this housing location</h2>
+    <ul>
+      <li>Units available: {{ housingLocation?.availableUnits }}</li>
+      <li>Does this location have wifi: {{ housingLocation?.wifi }}</li>
+      <li>Does this location have laundry: {{ housingLocation?.laundry }}</li>
+    </ul>
+  </section>
+  <section class="listing-apply">
+    <h2 class="section-heading">Apply now to live here</h2>
+    <form [formGroup]="applyForm"(submit)="submitApplication()" >
+      <div>
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput formControlName="firstName">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="lastName">
+        </mat-form-field>
+      </div>
+      <div class="example-container">
+        <mat-form-field>
+          <mat-label>Enter your email</mat-label>
+          <input
+            matInput
+            id="email"
+            placeholder="pat@example.com"
+            formControlName="email"
+            required
+          />
+          <mat-error *ngIf="applyForm.get('email')?.invalid && applyForm.get('email')?.touched">
+            {{getEmailErrorMessage()}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button type="submit" class="primary" [disabled]="!applyForm.valid">Apply now</button>
+    </form>
+  </section>
+</article>

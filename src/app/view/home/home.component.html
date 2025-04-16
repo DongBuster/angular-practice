@@ -1,0 +1,10 @@
+<app-carousel style="display: flex;justify-content: center;"></app-carousel>
+<div class="container text-center">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+    <app-housing-location 
+    *ngFor="let housingLocation of filteredLocationList" 
+    [housingLocation]="housingLocation">
+  </app-housing-location>
+  </div>
+</div>
+<app-toast></app-toast>

@@ -1,0 +1,11 @@
+<div class="card" style="width: 18rem;">
+  <img class="listing-photo" [src]="housingLocation.photo" alt="Exterior photo of {{housingLocation.name}}">
+  <div class="card-body">
+    <h5 class="card-title">{{ housingLocation.name }}</h5>
+    <p id="location" class="card-text">{{ housingLocation.city }}, {{ housingLocation.state }}</p>
+    <div id="add-house">
+      <a [routerLink]="['detail',housingLocation.id]" >Learn more</a>
+      <i-feather  (click)="addHouseToCart(housingLocation)" id="icon-add" name="plus" ></i-feather>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<header class="header-row" [ngClass]="{
+  'header-home': isHomePage,
+  'header-cart': isCartPage,
+  'header-detail': isDetailPage
+}">
+    <a [routerLink]="['/']" class="text-decoration-none">
+      <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true" />
+    </a>
+    <ng-container [ngSwitch]="true">
+      <app-search-bar *ngSwitchCase="isHomePage" ></app-search-bar>
+      <div id="header-tile" *ngSwitchCase="isCartPage">Your Cart</div>
+      <div id="header-tile" *ngSwitchCase="isDetailPage">Housing Details</div>
+    </ng-container>
+    <app-cart-button></app-cart-button>
+</header>
+<section class="content">
+  <router-outlet></router-outlet>
+</section>
+<nav id="footer">
+  <p id="author">Create by Dongbuster</p>
+</nav>  
