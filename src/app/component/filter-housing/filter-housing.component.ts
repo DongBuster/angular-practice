@@ -16,12 +16,12 @@ export class FilterHousingComponent {
   housingLocationList: Housinglocation[]=[]
   housingService:HousingService = inject(HousingService)
   filterHousingList: Housinglocation[]=[]
-
+  selectedValue = 'All'
   constructor(private filterService:FilterService){
-    this.housingService.getAllHousingLocations().then((housingList)=>{
-      this.housingLocationList = housingList
-      this.filterHousingList = housingList
-      this.filterService.updateFilteredLocations(this.filterHousingList)
+    this.housingService.getAllHousingLocations().subscribe((housingList)=>{
+      // this.housingLocationList = housingList
+      // this.filterHousingList = housingList
+      // this.filterService.updateFilteredLocations(this.filterHousingList)
     })
   }
  
@@ -29,23 +29,38 @@ export class FilterHousingComponent {
     const isChecked = (event.target as HTMLInputElement).checked;
 
     if (isChecked) {
-      this.filterHousingList = [...this.housingLocationList].sort((a, b) => a.price - b.price);
+      const list = [...this.filterHousingList].sort((a, b) => a.price - b.price);
+      this.filterService.updateFilteredLocations(list);
+
     } else {
-      this.filterHousingList = [...this.housingLocationList];
+      this.filterService.updateFilteredLocations(this.filterHousingList);
     }
-    // Cập nhật cho service nếu cần dùng
-    this.filterService.updateFilteredLocations(this.filterHousingList);
+ 
   }
   filterDecrease(event:Event){
     const isChecked = (event.target as HTMLInputElement).checked;
 
     if (isChecked) {
-      this.filterHousingList = [...this.housingLocationList].sort((a, b) => b.price - a.price);
+      const list = [...this.filterHousingList].sort((a, b) => b.price - a.price);
+      this.filterService.updateFilteredLocations(list);
+
     } else {
-      this.filterHousingList = [...this.housingLocationList];
+      this.filterService.updateFilteredLocations(this.filterHousingList);
     }
-    // Cập nhật cho service nếu cần dùng
-    this.filterService.updateFilteredLocations(this.filterHousingList);
+ 
+  }
+
+  filterRange(){
+    if(this.selectedValue == 'All'){
+      this.filterHousingList = [...this.housingLocationList];
+      this.filterService.updateFilteredLocations(this.filterHousingList)
+    } else{
+      const range = this.selectedValue.split('-');
+      const min = parseInt(range[0]);
+      const max = parseInt(range[1]);
+      this.filterHousingList = [...this.housingLocationList].filter((item)=> item.price >=min && item.price <=max)
+      this.filterService.updateFilteredLocations(this.filterHousingList)
+    }
   }
 
 }

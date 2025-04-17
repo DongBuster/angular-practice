@@ -1,9 +1,9 @@
-<header class="header-row" [ngClass]="{
+<header class="header-row" *ngIf="!isAuthPage" [ngClass]="{
   'header-home': isHomePage,
   'header-cart': isCartPage,
   'header-detail': isDetailPage
 }">
-    <a [routerLink]="['/']" class="text-decoration-none">
+    <a  [routerLink]="['/']" class="text-decoration-none">
       <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true" />
     </a>
     <ng-container [ngSwitch]="true">
@@ -12,10 +12,11 @@
       <div id="header-tile" *ngSwitchCase="isDetailPage">Housing Details</div>
     </ng-container>
     <app-cart-button></app-cart-button>
+    <app-user-profile></app-user-profile>
 </header>
 <section class="content">
   <router-outlet></router-outlet>
 </section>
-<nav id="footer">
+<nav id="footer" *ngIf="!isAuthPage">
   <p id="author">Create by Dongbuster</p>
 </nav>  

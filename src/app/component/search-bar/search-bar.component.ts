@@ -19,7 +19,7 @@ export class SearchBarComponent {
   housingService: HousingService = inject(HousingService);
   filteredLocationList:Housinglocation[]=[];
    constructor(private filterService:FilterService){
-       this.housingService.getAllHousingLocations().then((housingLocationList: Housinglocation[])=>{
+       this.housingService.getAllHousingLocations().subscribe((housingLocationList)=>{
        this.housingLocationList = housingLocationList;
        this.filteredLocationList = housingLocationList;
        this.filterService.updateFilteredLocations(this.filteredLocationList);
@@ -32,5 +32,8 @@ export class SearchBarComponent {
      );
      this.filterService.updateFilteredLocations(this.filteredLocationList);
 
+   }
+   ngOnDestroy(){
+    
    }
 }

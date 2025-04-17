@@ -19,11 +19,11 @@
       <p style="margin-bottom: 0;" class="ms-2">Giảm dần theo giá</p>
     </div>
    </div>
-    <select class="form-select" aria-label="Default select example">
-     <option value="0" selected>All</option>
-     <option value="1">500$-1000$</option>
-     <option value="2">1000$-1100$</option>
-     <option value="3">11000$-1200$</option>
+    <select class="form-select" [(ngModel)]="selectedValue" (change)="filterRange()"  aria-label="Default select example">
+     <option value="All" selected>All</option>
+     <option value="500-1000">500$-1000$</option>
+     <option value="1000-1100">1000$-1100$</option>
+     <option value="1100-1200">1100$-1200$</option>
    </select>
    
 </div>

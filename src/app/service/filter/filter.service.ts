@@ -12,4 +12,5 @@ export class FilterService {
   updateFilteredLocations(locations: Housinglocation[]) {
     this.filteredLocationsSource.next(locations);
   }
+  
 } 

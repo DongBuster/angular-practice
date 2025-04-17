@@ -33,7 +33,7 @@ export class DetailHousingComponent {
 
   constructor(private snackBar: MatSnackBar) {
     const housingLocationId = Number(this.route.snapshot.params['id']);
-    this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
+    this.housingService.getHousingLocationById(housingLocationId).subscribe((housingLocation) => {
       this.housingLocation = housingLocation;
     });
   }
@@ -51,7 +51,6 @@ export class DetailHousingComponent {
       duration: 3000, // 3 giây
       horizontalPosition: 'right',
       verticalPosition: 'top',
-      
       panelClass: ['custom-snackbar']
     });
   }

@@ -4,12 +4,13 @@ import { SearchBarComponent } from 'src/app/component/search-bar/search-bar.comp
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { UserProfileComponent } from '../component/user-profile/user-profile.component';
 
 @Component({
   selector: 'app-layout',
   standalone:true,
   imports:
-  [SearchBarComponent,CartButtonComponent,RouterModule,CommonModule],
+  [SearchBarComponent,CartButtonComponent,RouterModule,CommonModule,UserProfileComponent],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css']
 })
@@ -26,12 +27,20 @@ export class LayoutComponent {
   }
 
   ngOnInit() {
-    // Set route ban đầu
+    const isLogined = localStorage.getItem('login')
+    if(isLogined == 'true'){
+      this.router.navigate(['/home'])
+    }else{
+      this.router.navigate(['/'])
+    }
     this.currentRoute = this.router.url;
   }
 
-  get isHomePage(): boolean {
+  get isAuthPage(): boolean {
     return this.currentRoute === '/';
+  }
+  get isHomePage(): boolean {
+    return this.currentRoute.includes('/home');
   }
 
   get isCartPage(): boolean {
